@@ -18,14 +18,28 @@
 			<div>
 				<p>输入x ：<input type="text" id="x_no"></p>
 				<p>输入y ：<input type="text" id="y_no"></p>
-				<p><button type="button" id="paint_xy">画出坐标轴</button></p>
+				<p><button class="btn" id="paint_xy">画出坐标轴</button></p>
 			</div>
-			<script type="text/javascript">
-			$('#paint_xy').on("click", function () {
-				var x = document.getElementById('x_no');
-				var y = document.getElementById('y_no');
-				document.write(x,y);
-			});
-		</script> 
+			<div id="Paint">
+			</div>
+			
+			<script>
+				var btn = document.querySelector('.btn')
+				var x = document.getElementById('x_no')
+				var y = document.getElementById('y_no')
+				function btn_click(){
+					var tag = "<table border='1'>";
+		      		var x_v = parseInt(x.value);
+			    	var y_v = parseInt(y.value);
+			    		for (j = 1; j <= x_v; j++) {
+			        		tag += "<tr>";
+		        				for (i = 1; i <= y_v; i++) {
+		          					tag += "<td>"+j+"."+i+"</td>";}
+		       		 		tag += "</tr>";}
+		      			tag += "</table>";
+		      				Paint.innerHTML = tag;
+				}
+				btn.addEventListener('click',btn_click);
+			</script> 
 	</body>
 </html>
