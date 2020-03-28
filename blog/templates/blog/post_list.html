@@ -3,41 +3,62 @@
 	<head>
 		<meta charset="utf-8">
 		<title>毕业设计 - 金亨陈</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<style type=text/css></style>
-		<!-- 버튼 구현 코드 -->
 
+		<!-- 버튼 구현 코드 -->
+		
 	</head>
 	<body>
 		  	<div class="header">
 				<h1 align="center">人机混合的期货交易规律发现</h1>
-				<h2 align="right">by 金亨陈</h2></br>
+				<h2 align="right">by 金亨陈</h2>
+				<span id="line"></span>
 				<hr/>
 			</div>
-			<span class="anchor" id="line-14"></span>
-			<div>
+
+			<div class="body">
 				<p>输入x ：<input type="text" id="x_no"></p>
 				<p>输入y ：<input type="text" id="y_no"></p>
 				<p><button class="btn" id="paint_xy">画出坐标轴</button></p>
 			</div>
-			<div id="Paint">
+			
+			<div id="y_line" style="float: left; width: 2%; padding:5px;" >
 			</div>
 			
-			<script>
+			<div id="paint" style="padding:0px 0px 0px 50px">
+			</div>
+
+			<div id="x_line" style="float:left;width:100%;padding:7px">
+
+			</div>
+			<script> //Paint Table function
 				var btn = document.querySelector('.btn')
 				var x = document.getElementById('x_no')
 				var y = document.getElementById('y_no')
 				function btn_click(){
-					var tag = "<table border='1'>";
+					var tag = "<table border='1' cellspacing = '5' >";
 		      		var x_v = parseInt(x.value);
 			    	var y_v = parseInt(y.value);
-			    		for (j = 1; j <= x_v; j++) {
-			        		tag += "<tr>";
-		        				for (i = 1; i <= y_v; i++) {
-		          					tag += "<td>"+j+"."+i+"</td>";}
-		       		 		tag += "</tr>";}
+			    	var tag_x = "<table align = 'left' bgcolor='#ffffff' style='filter:alpha(opacity=80)' cellspacing = '5'> <tr>"
+			    	var tag_y = "<table bgcolor='#ffffff' width='20' style='filter:alpha(opacity=80)' cellspacing = '5'>"
+			    		
+			    		for (k = y_v; k >0 ; k--){
+			    			tag_y += "<tr valign = 'top' height='50px'><td>"+k+"</td></tr>"
+			    		}
+			    		y_line.innerHTML = tag_y+"</table>";
+			    		
+			    		for (i = 0; i <=x_v ; i++){
+			    			tag_x += "<td width='50px' align=right>"+i+"</td>"
+			    		}
+			    		x_line.innerHTML += tag_x+"</tr></table>";
+			    		for (j = 1; j <= y_v; j++) {
+			        		tag += "<tr height='50px' align='center'>";
+		        				for (i = 1; i <= x_v; i++) {
+		          					tag += "<td width='50px'>"+"xx%"+"</td>"
+		          				} //Insert value
+		       		 		tag += "</tr>";
+		       		 		}
 		      			tag += "</table>";
-		      				Paint.innerHTML = tag;
+		      			paint.innerHTML = tag;
 				}
 				btn.addEventListener('click',btn_click);
 			</script> 
