@@ -18,9 +18,12 @@
 			<div class="body">
 				<p>输入x ：<input type="text" id="x_no"></p>
 				<p>输入y ：<input type="text" id="y_no"></p>
-				<p><button class="btn" id="paint_xy">画出坐标轴</button></p>
+				<p><button class="btn" id="paint_xy">画出坐标轴</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp---------------夏普比率越高-------------->>>></p>
 			</div>
-			
+			<div id="color" style="float:left;width:100%;padding:5px">
+
+			</div>
+
 			<div id="y_line" style="float: left; width: 2%; padding:5px;" >
 			</div>
 			
@@ -30,6 +33,23 @@
 			<div id="x_line" style="float:left;width:100%;padding:7px">
 
 			</div>
+			<script>
+				var color_table = "<table border = '1' align = 'left'><tr height='50px'>"
+				var cc=255,dd=251
+				for (c=128;c>=0;c--){			
+					if(c>=64){
+					color_table+="<td width='2px' style ='background-color:rgb(255,255,"+(cc)+")'></td>";
+					cc-=4;							
+					}
+					else{
+					color_table+="<td width='2px' style ='background-color:rgb("+dd+","+dd+",0)'></td>";
+					dd-=4;							
+					}
+
+				}
+				color_table+="</tr></table>";
+				color.innerHTML=color_table;
+			</script>
 			<script> //Paint Table function
 				var btn = document.querySelector('.btn')
 				var x = document.getElementById('x_no')
